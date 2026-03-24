@@ -1,6 +1,58 @@
+
+Lagoon: A Basic sBTC Powered Lending App
+
+Lagoon is a decentralized lending application built on the Stacks blockchain, leveraging sBTC (Synthetic Bitcoin) as the primary asset for lending and borrowing. This basic implementation provides a foundation for users to supply and borrow assets, earning interest on deposits and paying interest on loans.
+
+Key Features
+
+- Lending Pool: Users can supply sBTC to the lending pool to earn interest.
+- Borrowing: Users can borrow sBTC from the lending pool, using their supplied assets as collateral.
+- Interest Rates: Algorithmic interest rates adjust based on utilization of the lending pool.
+- Collateral Management: Users can add or remove collateral to manage their loan-to-value ratio.
+
+Technical Overview
+
+- Blockchain: Stacks
+- Smart Contract Language: Clarity
+- Asset: sBTC (Synthetic Bitcoin)
+- Protocol: Decentralized lending and borrowing
+
+Core Functions
+
+Lending
+- `supply(sBTC_amount)`: Supply sBTC to the lending pool.
+- `withdraw(sBTC_amount)`: Withdraw sBTC from the lending pool.
+
+Borrowing
+- `borrow(sBTC_amount, collateral)`: Borrow sBTC from the lending pool, providing collateral.
+- `repay(sBTC_amount)`: Repay borrowed sBTC, including interest.
+
+Collateral Management
+- `add_collateral(collateral_amount)`: Add collateral to an existing loan.
+- `remove_collateral(collateral_amount)`: Remove collateral from an existing loan.
+
+Security Considerations
+
+- Smart Contract Risks: Bugs or vulnerabilities in the contract can lead to loss of funds.
+- sBTC Price Volatility: Fluctuations in sBTC price can impact collateral values.
+
+Future Development
+
+- Additional Assets: Support for multiple assets, including Stacks tokens and other synthetic assets.
+- Improved Interest Rate Model: More sophisticated interest rate adjustments based on market conditions.
+- Enhanced Security Measures: Regular audits and bug bounty programs to ensure contract security.
+
+Contributing
+
+Contributions are welcome! Please submit a pull request with your changes and a detailed description of the updates.
+
+License
+
+This project is licensed under the LICENSE.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+Getting Started
 
 First, run the development server:
 
