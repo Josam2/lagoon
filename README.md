@@ -1,88 +1,230 @@
+# Lagoon sBTC Lending Application
 
-Lagoon: A Basic sBTC Powered Lending App
+## 📋 Project Overview
 
-Lagoon is a decentralized lending application built on the Stacks blockchain, leveraging sBTC (Synthetic Bitcoin) as the primary asset for lending and borrowing. This basic implementation provides a foundation for users to supply and borrow assets, earning interest on deposits and paying interest on loans.
+Lagoon is a decentralized lending application built on the **Stacks blockchain**, leveraging **sBTC** (Synthetic Bitcoin) for lending and borrowing operations with algorithmic interest rates and collateral management.
 
-Key Features
+## ✨ Key Features
 
-- Lending Pool: Users can supply sBTC to the lending pool to earn interest.
-- Borrowing: Users can borrow sBTC from the lending pool, using their supplied assets as collateral.
-- Interest Rates: Algorithmic interest rates adjust based on utilization of the lending pool.
-- Collateral Management: Users can add or remove collateral to manage their loan-to-value ratio.
+- **Lending Pool**: Supply sBTC to earn algorithmic interest
+- **Borrowing**: Borrow sBTC using supplied assets as collateral
+- **Interest Rates**: Dynamic rates based on pool utilization
+- **Collateral Management**: Add/remove collateral to manage loan-to-value ratio
+- **Secure Transactions**: Built on Stacks blockchain with Clarity smart contracts
 
-Technical Overview
+## 🛠️ Tech Stack
 
-- Blockchain: Stacks
-- Smart Contract Language: Clarity
-- Asset: sBTC (Synthetic Bitcoin)
-- Protocol: Decentralized lending and borrowing
+| Component | Technology |
+|-----------|------------|
+| **Blockchain** | Stacks (STX) |
+| **Smart Contracts** | Clarity |
+| **Primary Asset** | sBTC |
+| **Frontend Framework** | Next.js 14+ |
+| **Styling** | Tailwind CSS |
+| **UI Components** | React |
+| **State Management** | @stacks/connect |
+| **Build Tool** | Next.js & SWC |
 
-Core Functions
+## 📦 Dependencies
 
-Lending
-- `supply(sBTC_amount)`: Supply sBTC to the lending pool.
-- `withdraw(sBTC_amount)`: Withdraw sBTC from the lending pool.
+### Core Blockchain Integration
+- `@stacks/connect@^7.4.0` - Wallet connection and authentication
+- `@stacks/network@^6.8.1` - Network configuration
+- `@stacks/transactions@^6.9.0` - Transaction signing and serialization
+- `sbtc@^0.1.7` - sBTC bridge functionality
+- `sbtc-bridge-lib@^1.1.8` - Advanced sBTC operations
 
-Borrowing
-- `borrow(sBTC_amount, collateral)`: Borrow sBTC from the lending pool, providing collateral.
-- `repay(sBTC_amount)`: Repay borrowed sBTC, including interest.
+### Cryptography
+- `@noble/hashes@^1.3.2` - Hash functions
+- `@scure/base@^1.1.3` - Base encoding/decoding
+- `@scure/btc-signer@^1.1.0` - Bitcoin signing utilities
 
-Collateral Management
-- `add_collateral(collateral_amount)`: Add collateral to an existing loan.
-- `remove_collateral(collateral_amount)`: Remove collateral from an existing loan.
+### Frontend
+- `next@latest` - React framework with SSR
+- `react@latest` - UI library
+- `react-dom@latest` - React DOM renderer
 
-Security Considerations
+### Development
+- `tailwindcss@latest` - Utility-first CSS
+- `autoprefixer@latest` - CSS vendor prefixing
+- `postcss@latest` - CSS transformation
+- `eslint@latest` - Code linting
+- `eslint-config-next@latest` - Next.js ESLint rules
 
-- Smart Contract Risks: Bugs or vulnerabilities in the contract can lead to loss of funds.
-- sBTC Price Volatility: Fluctuations in sBTC price can impact collateral values.
+## 🚀 Getting Started
 
-Future Development
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn package manager
+- Git for version control
 
-- Additional Assets: Support for multiple assets, including Stacks tokens and other synthetic assets.
-- Improved Interest Rate Model: More sophisticated interest rate adjustments based on market conditions.
-- Enhanced Security Measures: Regular audits and bug bounty programs to ensure contract security.
+### Installation
 
-Contributing
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Josam2/lagoon.git
+   cd lagoon
+   ```
 
-Contributions are welcome! Please submit a pull request with your changes and a detailed description of the updates.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-License
+3. **Configure environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   Edit `.env.local` with your configuration:
+   ```env
+   NEXT_PUBLIC_STACKS_API_URL=https://api.testnet.hiro.so
+   NEXT_PUBLIC_NETWORK=testnet
+   NEXT_PUBLIC_SBTC_CONTRACT_ID=your_contract_id
+   ```
 
-This project is licensed under the LICENSE.
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 📖 Available Scripts
 
-Getting Started
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Build optimized production bundle |
+| `npm start` | Run production server |
+| `npm run lint` | Run ESLint code quality checks |
 
-First, run the development server:
+## 🏗️ Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+lagoon/
+├── app/                    # Next.js App Router pages
+├── components/             # Reusable React components
+├── lib/                    # Utility functions & helpers
+├── styles/                 # Global styles
+├── public/                 # Static assets
+├── .env.example            # Environment variables template
+├── next.config.js          # Next.js configuration
+├── tailwind.config.js      # Tailwind CSS setup
+├── vercel.json             # Vercel deployment config
+└── .github/workflows/      # CI/CD pipelines
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 Core Functions
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Lending Operations
+- `supply(sBTC_amount)` - Supply sBTC to the lending pool
+- `withdraw(sBTC_amount)` - Withdraw sBTC from pool
+- `getPoolStats()` - View current pool utilization
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Borrowing Operations
+- `borrow(sBTC_amount, collateral)` - Borrow sBTC with collateral
+- `repay(sBTC_amount)` - Repay borrowed amount + interest
+- `getLoanStatus()` - Check loan details
 
-## Learn More
+### Collateral Management
+- `addCollateral(amount)` - Increase collateral backing
+- `removeCollateral(amount)` - Reduce collateral with LTV check
+- `getLTV()` - Get loan-to-value ratio
 
-To learn more about Next.js, take a look at the following resources:
+## 🔐 Security Considerations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+⚠️ **Important**: This is a basic implementation for educational purposes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Smart Contract Risks**: Potential vulnerabilities require auditing
+- **sBTC Volatility**: Price fluctuations impact collateral values
+- **Account Abstraction**: Ensure proper key management
+- **Rate Risks**: Interest rates change with pool utilization
 
-## Deploy on Vercel
+## 📊 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Deploy to Vercel (Recommended)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. **Connect Repository**
+   - Sign up at [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+
+2. **Set Environment Variables**
+   - Add all variables from `.env.example` in Vercel settings
+
+3. **Automatic Deployment**
+   - Every push to `main` triggers automatic deployment
+   - GitHub Actions workflow handles build & testing
+
+### Environment Setup for Production
+
+```bash
+# Testnet
+NEXT_PUBLIC_STACKS_API_URL=https://api.testnet.hiro.so
+NEXT_PUBLIC_NETWORK=testnet
+
+# Mainnet (production)
+NEXT_PUBLIC_STACKS_API_URL=https://api.mainnet.hiro.so
+NEXT_PUBLIC_NETWORK=mainnet
+```
+
+### Required GitHub Secrets
+Add these to your repository Settings → Secrets & variables:
+
+```
+VERCEL_TOKEN          # Vercel authentication token
+VERCEL_ORG_ID         # Vercel organization ID
+VERCEL_PROJECT_ID     # Vercel project ID
+```
+
+## 🌐 Network Configuration
+
+### Testnet (Development)
+- API: `https://api.testnet.hiro.so`
+- Explorer: [testnet.explorer.stacks.co](https://testnet.explorer.stacks.co)
+- Faucet: Request testnet STX tokens
+
+### Mainnet (Production)
+- API: `https://api.mainnet.hiro.so`
+- Explorer: [explorer.stacks.co](https://explorer.stacks.co)
+- Real assets & transactions
+
+## 📚 Learning Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Stacks Developer Docs](https://docs.stacks.co)
+- [sBTC Bridge](https://www.sbtc.tech)
+- [Clarity Language](https://docs.stacks.co/clarity)
+- [Hiro Wallet](https://www.hiro.so/wallet)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🔗 Social Links
+
+Connect with the developer:
+- **Bluesky**: [josamtech.bsky.social](https://bsky.app/profile/josamtech.bsky.social)
+- **Twitter**: [@TechsphereH](https://x.com/TechsphereH)
+- **Facebook**: [Josam Profile](https://www.facebook.com/share/1CFEEnoCrY/)
+
+## ⚡ Quick Links
+
+- 🏠 [Repository](https://github.com/Josam2/lagoon)
+- 🐛 [Report Issues](https://github.com/Josam2/lagoon/issues)
+- 💬 [Discussions](https://github.com/Josam2/lagoon/discussions)
+- 📦 [Releases](https://github.com/Josam2/lagoon/releases)
+
+---
+
+**Status**: Active Development | **Last Updated**: May 2026
+
+*For production use, conduct security audits and thorough testing before deploying with real assets.*
