@@ -1,0 +1,5 @@
+.node_modules.swiftpm
+.build
+.env.local
+.env.*.local
+.vscode/settings.json
