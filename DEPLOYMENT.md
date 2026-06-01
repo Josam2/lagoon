@@ -199,6 +199,26 @@ Vercel will:
 Create `.github/workflows/deploy.yml`:
 
 ```yaml
+
+name: Deploy Lagoon sBTC
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy
+        env:
+          LAGOON_SBTC_TOKEN: ${{ secrets.LAGOON_SBTC_TOKEN }}
+        run: |
+          # Use the token in your script
+          echo "Deploying with token: $LAGOON_SBTC_TOKEN"
+          # Your deployment script here
+
 name: Deploy to Vercel
 
 on:
